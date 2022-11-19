@@ -1,0 +1,47 @@
+
+body{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+}
+
+p.verso{
+    color:blue
+}
+
+p.mote{
+    color: red;
+}
+
+a.links:link{
+    color:black;
+}
+
+a.links:visited{
+    color:red;
+}
+a.links:hover{
+    color:green;
+}
+a.links:active{
+    color:blue;
+}
+
+div.poeta img{
+    width: 10rem;
+    border-radius: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table th{
+    background: gray;
+}
+
+table td,
+table th {
+    border: 1px solid #ccc;
+    padding: 5px;
+}

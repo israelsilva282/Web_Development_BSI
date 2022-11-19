@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Receita - React 02</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="libs/react.js"></script>
+    <script src="libs/react-dom.js"></script>
+    <script src="libs/babel.js"></script>
+    <script type="text/babel">
+      class TabelaBebidas extends React.Component {
+        render() {
+          return (
+            <div>
+              <h1>{this.props.titulo}</h1>
+              <table id="tabela" border="1">
+                <thead>
+                  <tr>
+                    <th>Nome</th>
+                    <th>Marca</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>Havana</td>
+                    <td>Engenho Anísio Santiago</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          );
+        }
+      }
+
+      class Header extends React.Component {
+        render() {
+          return <h1>Olá, {this.props.name}</h1>;
+        }
+      }
+
+      class Lists extends React.Component {
+        render() {
+          return (
+            <div>
+              <dl>
+                <dt>Refrigerante</dt>
+                <dd>Bebiba com gás</dd>
+                <dt>Energético</dt>
+                <dd>Bebida que te deixa muito loco</dd>
+              </dl>
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<TabelaBebidas titulo="Tabela de Cana"/>, document.getElementById("app"));
+    </script>
+  </body>
+</html>

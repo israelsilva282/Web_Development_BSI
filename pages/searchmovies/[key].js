@@ -2,7 +2,7 @@ import useSWR from "swr";
 import { useRouter } from "next/router";
 
 import { Spin, Table, Typography } from "antd";
-import "antd/dist/antd.css";
+import "antd/dist/reset.css";
 import { Error, GoBack } from "..";
 
 export default function Movie() {

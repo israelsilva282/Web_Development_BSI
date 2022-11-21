@@ -1,15 +1,13 @@
 import useSWR from 'swr'
 import { useRouter } from 'next/router'
 
-<<<<<<< HEAD
 import { Spin, Table, Typography } from "antd";
 import "antd/dist/reset.css";
 import { Error, GoBack } from "..";
-=======
 import { Spin, Table, Typography } from 'antd';
 import 'antd/dist/reset.css';
 import { Error, GoBack } from '..';
->>>>>>> 6ba42552 (Att Receita 5)
+
 
 export default function Movie() {
   const router = useRouter();

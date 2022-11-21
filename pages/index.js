@@ -1,33 +1,33 @@
 import useSWR from 'swr'
 
-import {useState} from 'react'
-import { Table, Input, Space  } from 'antd';
-import 'antd/dist/reset.css'; 
+import { useState } from 'react'
+import { Table, Input, Space, Typography, Spin } from 'antd';
+import 'antd/dist/reset.css';
 import { useRouter } from 'next/router';
 
 const { Search } = Input;
 
-export default function Index(){
-    const [url, setUrl] = useState('https://www.omdbapi.com/?apikey=9b30f837&s=bagdad');
-    const {data, error} = useSWR(url, theFetcher);
+export default function Index() {
+    const [url, setUrl] = useState('https://www.omdbapi.com/?apikey=cfaaddf1&s=bagdad');
+    const { data, error } = useSWR(url, theFetcher);
 
     const onClickHandler = (e) => {
         e.preventDefault();
 
-        if (url === '') setUrl('https://www.omdbapi.com/?apikey=9b30f837&s=bagdad');
+        if (url === '') setUrl('https://www.omdbapi.com/?apikey=cfaaddf1&s=bagdad');
         else setUrl('');
     }
 
     return (
         <div>
-            <TheLink url={url} handler={onClickHandler}/>
-            <TheMovies data={ error?{error:'Erro na pesquisa'}: data ? data: {Search:''} } show={url !== ''}/>
+            <TheLink url={url} handler={onClickHandler} />
+            <TheMovies data={error ? { error: 'Erro na pesquisa' } : data ? data : { Search: '' }} show={url !== ''} />
         </div>
     )
 }
 
 async function theFetcher(url) {
-    if (url === null || url === '') return {Search:''};
+    if (url === null || url === '') return { Search: '' };
 
     const res = await fetch(url);
     const json = await res.json();
@@ -36,15 +36,21 @@ async function theFetcher(url) {
 
 }
 
-export function TheMovies({data,show}){
-    if (!show) return (<div></div>);    
+export function TheMovies({ data, show }) {
+    if (!show) return (<div></div>);
 
-    if (data.error) return (<div>falha na requisição</div>);
+    if (data.Error) {
+        return (
+            <Error error={data.Error} />
+        )
+    }
 
-    if (data.Search === '' ) return (<div>carregando...</div>);
+    if (data.Search === '') {
+        return <Spin />
+    }
 
     let dados = data.Search.map((m) => {
-        return { 
+        return {
             ...m,
             key: m.imdbID
         };
@@ -57,8 +63,8 @@ export function TheMovies({data,show}){
     return (
         <div className="space-align-container">
             <div className="space-align-block">
-                <Space direction="horizontal" style={{width: '100%', justifyContent: 'end'}}>
-                    <form action='/searchmovie/[key]' id="form-pesquisar" style={{marginBottom: "10px"}}>
+                <Space direction="horizontal" style={{ width: '100%', justifyContent: 'end' }}>
+                    <form action='/searchmovie/[key]' id="form-pesquisar" style={{ marginBottom: "10px" }}>
                         <Search
                             name='key'
                             placeholder="Pesquise por filmes"
@@ -87,7 +93,7 @@ const columns = [
     },
 ];
 
-export function TheLink({url, handler}){    
+export function TheLink({ url, handler }) {
     return (
         <div>
             <a href="/movies.js" onClick={handler}> {url === '' ? 'Mostrar' : 'Ocultar'} </a>
@@ -98,4 +104,12 @@ export function TheLink({url, handler}){
 export function GoBack() {
     const router = useRouter();
     return (<a onClick={() => router.back()}>Voltar</a>);
+}
+
+export function Error({ error }) {
+    return (
+        <Typography.Title level={1} style={{ margin: 10 }}>
+            {error}
+        </Typography.Title>
+    )
 }

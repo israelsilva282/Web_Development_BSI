@@ -70,7 +70,7 @@ export function TheMovies({ data, show }) {
     return (
         <div className="space-align-container" style={{
             background: "white",
-            maxWidth: "30%",
+            maxWidth: "500px",
             margin: "50px auto",
             padding: "20px",
             borderRadius: "10px",

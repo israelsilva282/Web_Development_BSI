@@ -54,13 +54,6 @@ export function TheMovies({ data, show }) {
         return <Spin />
     }
 
-    let dados = data.Search.map((m) => {
-        return {
-            ...m,
-            key: m.imdbID
-        };
-    })
-
     const onSearch = () => {
         document.getElementById("form-pesquisar").submit();
     }
@@ -71,6 +64,7 @@ export function TheMovies({ data, show }) {
         <div className="space-align-container" style={{
             background: "white",
             maxWidth: "500px",
+            width: "85%",
             margin: "50px auto",
             padding: "20px",
             borderRadius: "10px",

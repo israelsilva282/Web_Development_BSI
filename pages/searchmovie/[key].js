@@ -38,19 +38,6 @@ export function TheMovies({ data }) {
         return <Spin />
     }
 
-    let dados = Array.isArray(data.Search) ? data.Search.map((m) => {
-        return {
-            ...m,
-            key: m.imdbID
-        };
-    }) : () => {
-        data.Title = <a href={"onemovie/" + m.imdbID}>{m.Title}</a>;
-        return {
-            ...data,
-            key: data.imdbID
-        }
-    }
-
     document.body.style.backgroundImage = `url("https://images5.alphacoders.com/774/774369.jpg")`;
 
     return (
@@ -58,6 +45,7 @@ export function TheMovies({ data }) {
             <section className='container' style={{
                 background: "white",
                 maxWidth: "500px",
+                width: "85%",
                 margin: "50px auto",
                 padding: "20px",
                 borderRadius: "10px",

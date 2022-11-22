@@ -30,6 +30,7 @@ export default function Movies() {
                 <div style={{
                     background: "white",
                     maxWidth: "600px",
+                    width: "85%",
                     margin: "50px auto",
                     padding: "20px",
                     borderRadius: "10px",
